@@ -66,27 +66,60 @@ function roll_d6() {
 
 // TASK PART 5
 
-function gamble1() {
+function gamble() {
 
-    let player_number = (Math.ceil(Math.random() * 12)); // basically two dice
+    let player_dice1 = (Math.ceil(Math.random() * 6)); // Basically the roll_d6 function, but twice
+    
+    let player_dice2 = (Math.ceil(Math.random() * 6));
 
-    console.log (`You rolled a ${player_number}`)
+    let player_number = player_dice1 + player_dice2; // Adds the two dice that were rolled
+    
+    console.log (`You rolled a ${player_dice1} and a ${player_dice2}.\nIn total, ${player_number}`);
+
+    let house_dice1 = (Math.ceil(Math.random() * 6)); // Same odds
+
+    let house_dice2 = (Math.ceil(Math.random() * 6));
+
+    let house_number = house_dice1 + house_dice2;
+
+    console.log (`The house rolled a ${house_dice1} and a ${house_dice2}.\nIn total, ${house_number}`);
+
+    if (player_number>house_number) { // If your number is higher
+
+        console.log(`Congrats! You rolled a higher number.`);
+
+    }
+
+    if (player_number<house_number) { // If your number was lower
+        
+        console.log(`Womp Womp. You rolled a lower number than the house.`);
+
+    }
+
+    if (player_number==house_number) { // If your number was the same
+
+        console.log(`You rolled the same number as the house. Try again and gamble some more!!!`);
+
+    }
 
 }
 
 
-function gamble2() {
+function your_age() { // Calculates your age semi-accurately, it does not factor in the day you were born
 
-    let house_number = (Math.ceil(Math.random() * 12));
+    let birth_month = +prompt(`What month were you born in? (in numbers)`);
 
-    if (player_number > house_number)
+    let birth_year = +prompt(`What year were you born in?`);
 
-        console.log(`Congrats! Your number is higher. You rolled a ${player_number} and the house rolled a ${house_number}`)
+    let year_age = 2024 - birth_year
 
-    if (player_number < house_number)
+    if (birth_month>10) { // October is the 10th month
+        
+        year_age--
 
-    console.log(`Womp Womp. You only rolled a ${player_number} while the house rolled a $`)
+    }
+
+    console.log(`You are currently ${year_age} years old. (Unless your birthday is this month and before today)`)
 
 }
-
-// not done yet
+ // your_age function is not complete (almost done)
